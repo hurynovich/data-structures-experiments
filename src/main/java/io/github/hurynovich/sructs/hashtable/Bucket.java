@@ -1,6 +1,6 @@
 package io.github.hurynovich.sructs.hashtable;
 
-public interface Bucket <K, V>{
+interface Bucket <K, V>{
     V get(Object key);
 
     public V put(Object key, V val);
