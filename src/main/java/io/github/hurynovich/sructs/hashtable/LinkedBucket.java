@@ -1,4 +1,6 @@
-public class SimpleBucket<K, V> {
+package io.github.hurynovich.sructs.hashtable;
+
+public final class LinkedBucket<K, V> {
 
     public V get(Object key){
         throw new UnsupportedOperationException();
