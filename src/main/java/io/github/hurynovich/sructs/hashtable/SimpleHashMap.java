@@ -1,16 +1,33 @@
+package io.github.hurynovich.sructs.hashtable;
+
+import java.security.Provider;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Supplier;
 
-public class SimpleHashMap<K, V> implements Map<K,V> {
+/**
+ * My implementation of hashtable just to revise data structures topic.
+ *
+ * @implNote
+ * This implementation has static capacity of hashtable and doesn't grow
+ * automatically. To change capacity new instance must be created.
+ *
+ * @param <K> - key type
+ * @param <V> - value type
+ */
+public final class SimpleHashMap<K, V> implements Map<K,V> {
 
-    private SimpleBucket<K, V>[] hashTable;
+    /** Array which holds values by hash code. */
+    private Bucket<K, V>[] hashTable;
 
     private final int capacity;
 
     private final int maxIndex;
 
     private int size;
+
+    private Supplier<Bucket<K,V>> bucketFactory = LinkedBucket::new;
 
     public SimpleHashMap(){
         this(1 << 8);
@@ -58,9 +75,9 @@ public class SimpleHashMap<K, V> implements Map<K,V> {
     public V put(K key, V value) {
         final int i = toIndex(key);
 
-        SimpleBucket<K,V> bucket;
+        Bucket<K,V> bucket;
         if((bucket = hashTable[i]) == null){
-            hashTable[i] = bucket = new SimpleBucket<>();
+            hashTable[i] = bucket = bucketFactory.get();
         }
 
         return bucket.put(key, value);
@@ -75,26 +92,30 @@ public class SimpleHashMap<K, V> implements Map<K,V> {
     @Override
     public void clear() {
         size = 0;
-        hashTable = new SimpleBucket[capacity];
+        hashTable = new Bucket[capacity];
     }
 
     @Override
     public void putAll(Map<? extends K, ? extends V> m) {
+        //TODO implement
         throw new UnsupportedOperationException("Method is not implemented");
     }
 
     @Override
     public Set<K> keySet() {
+        //TODO implement
         throw new UnsupportedOperationException("Method is not implemented");
     }
 
     @Override
     public Collection<V> values() {
+        //TODO implement
         throw new UnsupportedOperationException("Method is not implemented");
     }
 
     @Override
     public Set<Entry<K, V>> entrySet() {
+        //TODO implement
         throw new UnsupportedOperationException("Method is not implemented");
     }
 

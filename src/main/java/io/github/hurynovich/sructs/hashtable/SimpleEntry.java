@@ -1,3 +1,5 @@
+package io.github.hurynovich.sructs.hashtable;
+
 import java.util.Map;
 
 class SimpleEntry<K, V> implements Map.Entry<K, V> {
