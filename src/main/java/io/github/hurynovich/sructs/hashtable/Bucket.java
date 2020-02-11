@@ -1,9 +1,11 @@
 package io.github.hurynovich.sructs.hashtable;
 
-interface Bucket <K, V>{
-    V get(Object key);
+import java.util.Map;
 
-    public V put(Object key, V val);
+interface Bucket <K, V>{
+    Map.Entry<K, V> get(Object key);
+
+    public Map.Entry<K, V> put(K key, V val);
 
     public V remove(Object key);
 

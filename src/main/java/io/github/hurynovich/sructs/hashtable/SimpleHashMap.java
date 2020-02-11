@@ -68,7 +68,7 @@ public final class SimpleHashMap<K, V> implements Map<K,V> {
     @Override
     public V get(Object key) {
         final int i = toIndex(key);
-        return hashTable[i].get(key);
+        return hashTable[i].get(key).getValue();
     }
 
     @Override
@@ -80,7 +80,7 @@ public final class SimpleHashMap<K, V> implements Map<K,V> {
             hashTable[i] = bucket = bucketFactory.get();
         }
 
-        return bucket.put(key, value);
+        return bucket.put(key, value).getValue();
     }
 
     @Override
