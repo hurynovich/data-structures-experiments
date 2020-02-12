@@ -3,11 +3,11 @@ package io.github.hurynovich.sructs.hashtable;
 import java.util.Map;
 
 interface Bucket <K, V>{
-    Map.Entry<K, V> get(Object key);
+    V get(Object key);
 
-    public Map.Entry<K, V> put(K key, V val);
+    public V put(K key, V val, Runnable sizeCallback);
 
-    public V remove(Object key);
+    public V remove(Object key, Runnable sizeCallback);
 
     boolean containsValue(Object value);
 }

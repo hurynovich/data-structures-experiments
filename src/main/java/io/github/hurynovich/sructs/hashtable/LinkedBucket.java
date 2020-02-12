@@ -13,28 +13,34 @@ import java.util.Map;
 final class LinkedBucket<K, V> implements Bucket<K, V>{
     private final List<Map.Entry<K, V>> content = new LinkedList<>();
 
-    public Map.Entry<K, V> get(Object key){
+    @Override
+    public V get(Object key){
         for (var entry : content) {
-            if(entry.getKey().equals(key)) return entry;
+            if(entry.getKey().equals(key)) {
+                assert entry != null;
+                return entry.getValue();
+            }
         }
         return null;
     }
 
-    public Map.Entry<K, V> put(K key, V val){
+    @Override
+    public V put(K key, V val, Runnable sizeCallback){
         var it = content.iterator();
         while (it.hasNext()){
             var entry = it.next();
             if(entry.getKey().equals(key)){
-                entry.setValue(val);
-                return entry;
+                return entry.setValue(val);
             }
         }
 
         var entry = new SimpleEntry<K,V>(key, val);
         content.add(entry);
-        return entry;
+        sizeCallback.run();
+        return null;
     }
 
+    @Override
     public boolean containsValue(Object value) {
         var it = content.iterator();
         while (it.hasNext()){
@@ -46,16 +52,18 @@ final class LinkedBucket<K, V> implements Bucket<K, V>{
         return false;
     }
 
-    public V remove(Object key) {
+    @Override
+    public V remove(Object key, Runnable countCallback) {
         var it = content.iterator();
         while (it.hasNext()){
             var entry = it.next();
             if(entry.getKey().equals(key)){
                 it.remove();
-                assert entry != null;
+                countCallback.run();
                 return entry.getValue();
             }
         }
         return null;
     }
+
 }

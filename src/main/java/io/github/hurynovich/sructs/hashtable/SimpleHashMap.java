@@ -1,13 +1,12 @@
 package io.github.hurynovich.sructs.hashtable;
 
-import java.security.Provider;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Supplier;
 
 /**
- * My implementation of hashtable just to revise data structures topic.
+ * My complete implementation of JCF {@link Map} just to revise data structures topic.
  *
  * @implNote
  * This implementation has static capacity of hashtable and doesn't grow
@@ -42,9 +41,9 @@ public final class SimpleHashMap<K, V> implements Map<K,V> {
     }
 
     @Override
-    public int size() {
-        return size;
-    }
+    public int size() { return size; }
+    public void increaseSize() { size++; }
+    public void decreaseSize() { size--; }
 
     @Override
     public boolean isEmpty() {
@@ -68,7 +67,7 @@ public final class SimpleHashMap<K, V> implements Map<K,V> {
     @Override
     public V get(Object key) {
         final int i = toIndex(key);
-        return hashTable[i].get(key).getValue();
+        return hashTable[i].get(key);
     }
 
     @Override
@@ -77,16 +76,16 @@ public final class SimpleHashMap<K, V> implements Map<K,V> {
 
         Bucket<K,V> bucket;
         if((bucket = hashTable[i]) == null){
-            hashTable[i] = bucket = bucketFactory.get();
+            hashTable[i] = (bucket = bucketFactory.get());
         }
 
-        return bucket.put(key, value).getValue();
+        return bucket.put(key, value, this::increaseSize);
     }
 
     @Override
     public V remove(Object key) {
         final int i = toIndex(key);
-        return hashTable[i].remove(key);
+        return hashTable[i].remove(key, this::decreaseSize);
     }
 
     @Override

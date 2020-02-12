@@ -21,7 +21,7 @@ final class SimpleEntry<K, V> implements Map.Entry<K, V> {
      * Creates new entry instance with given key and value.
      *
      * @param key - key for this entry. Must not be {@code null}.
-     * @param val - initial value for this entry. Must not be {@code null}.
+     * @param val - initial value for this entry. Can be {@code null}.
      */
     SimpleEntry(K key, V val) {
         Objects.requireNonNull(key, "Key must not be null.");
@@ -45,8 +45,6 @@ final class SimpleEntry<K, V> implements Map.Entry<K, V> {
     /** {@inheritDoc} */
     @Override
     public V setValue(V value) {
-        Objects.requireNonNull(key, "Value must not be null.");
-
         V prevVal = this.val;
         this.val = value;
         return prevVal;
