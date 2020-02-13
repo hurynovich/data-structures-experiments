@@ -13,6 +13,7 @@ import java.util.Map;
 final class LinkedBucket<K, V> implements Bucket<K, V>{
     private final List<Map.Entry<K, V>> content = new LinkedList<>();
 
+    /** {@inheritDoc} */
     @Override
     public V get(Object key){
         for (var entry : content) {
@@ -24,6 +25,7 @@ final class LinkedBucket<K, V> implements Bucket<K, V>{
         return null;
     }
 
+    /** {@inheritDoc} */
     @Override
     public V put(K key, V val, Runnable sizeCallback){
         var it = content.iterator();
@@ -40,6 +42,7 @@ final class LinkedBucket<K, V> implements Bucket<K, V>{
         return null;
     }
 
+    /** {@inheritDoc} */
     @Override
     public boolean containsValue(Object value) {
         var it = content.iterator();
@@ -52,6 +55,7 @@ final class LinkedBucket<K, V> implements Bucket<K, V>{
         return false;
     }
 
+    /** {@inheritDoc} */
     @Override
     public V remove(Object key, Runnable countCallback) {
         var it = content.iterator();
@@ -65,5 +69,4 @@ final class LinkedBucket<K, V> implements Bucket<K, V>{
         }
         return null;
     }
-
 }
