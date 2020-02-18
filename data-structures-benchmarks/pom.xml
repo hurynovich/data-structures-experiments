@@ -21,7 +21,7 @@
 
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
-            <artifactId>jmh-java-benchmark-archetype</artifactId>
+            <artifactId>jmh-core</artifactId>
         </dependency>
     </dependencies>
 </project>
