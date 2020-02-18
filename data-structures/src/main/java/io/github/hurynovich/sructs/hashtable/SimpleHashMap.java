@@ -118,6 +118,7 @@ public final class SimpleHashMap<K, V> implements Map<K,V> {
         throw new UnsupportedOperationException("Method is not implemented");
     }
 
+    //TODO find out hot index created in java.util.HashMap
     private int toIndex(Object key) {
         return Math.abs(key.hashCode() % maxIndex);
     }
