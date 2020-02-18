@@ -119,6 +119,6 @@ public final class SimpleHashMap<K, V> implements Map<K,V> {
     }
 
     private int toIndex(Object key) {
-        return key.hashCode() % maxIndex;
+        return Math.abs(key.hashCode() % maxIndex);
     }
 }
