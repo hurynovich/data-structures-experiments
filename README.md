@@ -1,2 +1,2 @@
-# algorithm-experiments
-Here I implements simple versions of well known algorithms just for practice.
+# Data structures experiments
+Here I implements simple versions of well known data structures and algorithms just for practice.
