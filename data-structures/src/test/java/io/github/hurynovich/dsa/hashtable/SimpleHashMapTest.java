@@ -1,13 +1,8 @@
-package io.github.hurynovich.sructs.hashtable;
+package io.github.hurynovich.dsa.hashtable;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Timeout;
 
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class SimpleHashMapTest {
     private static final Logger log = Logger.getLogger(SimpleHashMapTest.class.getCanonicalName());

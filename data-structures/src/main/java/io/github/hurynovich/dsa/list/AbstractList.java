@@ -1,4 +1,4 @@
-package io.github.hurynovich.sructs.list;
+package io.github.hurynovich.dsa.list;
 
 import java.util.Collection;
 import java.util.Iterator;

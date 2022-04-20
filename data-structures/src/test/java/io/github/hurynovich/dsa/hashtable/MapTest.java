@@ -1,13 +1,9 @@
-package io.github.hurynovich.sructs.hashtable;
+package io.github.hurynovich.dsa.hashtable;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.HashMap;
 import java.util.Map;
-import java.util.TreeMap;
 import java.util.function.Supplier;
 
 import static org.junit.jupiter.api.Assertions.*;

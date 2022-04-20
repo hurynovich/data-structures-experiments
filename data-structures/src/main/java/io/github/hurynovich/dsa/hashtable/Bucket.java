@@ -1,6 +1,4 @@
-package io.github.hurynovich.sructs.hashtable;
-
-import java.util.Map;
+package io.github.hurynovich.dsa.hashtable;
 
 /**
  * Interface which specifies hashtable bucket which handles hashcode collisions.
